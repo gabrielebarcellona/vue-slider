@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+		<div class="carousel">
+			<div class="highlighted">
+                
+                <div class="slide" :class= "{active: i == activeIndex}" v-for="(slide,i) in Images">
+                    <img :src="slide.image" >
+                   <div class="contents"> 
+                        <h2>{{ slide.title }}</h2>
+                        <p>{{ slide.text }}/p>
+                    </div>
+                </div>;
+			</div>
+
+		
+			<div class="Arrow">
+				<div class="controls">
+					<i 
+                    class="bi bi-arrow-up-circle-fill btn btn-prev"
+                    @click="showPrevSlide"
+                   ></i>
+                    
+
+					<i 
+                    class="bi bi-arrow-down-circle-fill btn btn-next"
+                    @click="showNextSlide"
+                    ></i>
+
+                    <div class="ArrowImg">
+                        <img
+                        v-for="(slide,i)in Images"
+                        :src="slide.image"
+                        :class="i == activeIndex ? 'active' : ''"
+                        @click="setActiveIndex"
+                        >
+                    </div>
+				</div>
+				
+			</div>
+		</div>
+	</div>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="script.js"></script>r
+</body>
+</html>
